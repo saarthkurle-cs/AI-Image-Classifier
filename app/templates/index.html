@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Image Classifier</h1>
+            <p>Upload an image to classify it using a custom-trained deep learning model</p>
+        </header>
+        
+        <main>
+            <section class="upload-section">
+                <h2>Upload Image</h2>
+                <form action="/predict" method="post" enctype="multipart/form-data" id="upload-form">
+                    <div class="file-input-container">
+                        <input type="file" name="file" id="file-input" accept=".jpg, .jpeg, .png">
+                        <label for="file-input" class="file-label">
+                            <span class="file-icon">📁</span>
+                            <span class="file-text">Choose file or drag here</span>
+                        </label>
+                        <div id="preview-container" class="hidden">
+                            <img id="image-preview" src="#" alt="Preview">
+                            <button type="button" id="remove-image">✕</button>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit-btn" disabled>Classify Image</button>
+                </form>
+            </section>
+            
+            <section class="info-section">
+                <h2>About This Classifier</h2>
+                <p>This image classifier was built using transfer learning with MobileNetV2 and can identify the following classes:</p>
+                <ul class="classes-list">
+                    {% for class in classes %}
+                    <li>{{ class }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="model-info">
+                    <h3>Model Architecture</h3>
+                    <p>MobileNetV2 with custom classification head</p>
+                    <h3>Built With</h3>
+                    <p>TensorFlow, Keras, Flask, and Python</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Created by [Your Name] - AI/ML Portfolio Project</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

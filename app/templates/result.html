@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Results - AI Image Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Classification Results</h1>
+        </header>
+        
+        <main class="results-main">
+            <div class="results-container">
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded image">
+                </div>
+                
+                <div class="predictions-container">
+                    <h2>Predictions</h2>
+                    <div class="prediction-results">
+                        {% for prediction in predictions %}
+                        <div class="prediction-item">
+                            <div class="prediction-label">{{ prediction.class }}</div>
+                            <div class="prediction-bar-container">
+                                <div class="prediction-bar" style="width: {{ prediction.probability }}%"></div>
+                                <span class="prediction-value">{{ "%.2f"|format(prediction.probability) }}%</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="/" class="button">Classify Another Image</a>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Created by [Your Name] - AI/ML Portfolio Project</p>
+        </footer>
+    </div>
+</body>
+</html>
