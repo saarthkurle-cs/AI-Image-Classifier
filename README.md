@@ -1,4 +1,4 @@
-#AI Image Classifier
+# AI-Image-Classifier
 
 Running the Application:
 
