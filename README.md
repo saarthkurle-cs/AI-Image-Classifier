@@ -1,6 +1,6 @@
 # AI-Image-Classifier
 
-Running the Application:
+Clone the repo
 
 Start the Flask application:
 
